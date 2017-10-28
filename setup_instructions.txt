@@ -1,0 +1,16 @@
+docker run --rm -v $(pwd):/app composer/composer install
+
+cp .env.example .env
+
+docker-compose up (-d flag to detach it, in which case it's killed with docker-compose down)
+
+(all commands are run with [docker-compose exec :application :command]
+where :application is the name of the application from docker-compose.yaml, and :command is the command you want to run)
+
+docker-compose exec app php artisan key:generate
+docker-compose exec app php artisan optimize
+
+chmod -R o+w storage/ bootstrap/cache
+
+docker-compose exec app npm install
+docker-compose exec app npm run dev     (run production to also minify)
