@@ -1,4 +1,5 @@
 docker run --rm -v $(pwd):/app composer/composer install
+(on windows run pwd manually and plug it in the command above and use powershell)
 
 cp .env.example .env
 
